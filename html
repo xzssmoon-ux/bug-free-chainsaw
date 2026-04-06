@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Галактическое портфолио | Космическое творчество</title>
+    <!-- Современный шрифт и базовые стили -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
+            color: #eef4ff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Анимированный градиентный фон для акцентов */
+        .glow-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(56, 139, 253, 0.08), transparent 60%);
+        }
+
+        /* Кастомный контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Шапка с навигацией */
+        header {
+            padding: 20px 0;
+            backdrop-filter: blur(12px);
+            background: rgba(10, 15, 30, 0.65);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(72, 120, 255, 0.2);
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a0c0ff, #4f7eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo i {
+            color: #4f7eff;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            margin-right: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: #cdd9ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #7aa2ff;
+            text-shadow: 0 0 6px rgba(100, 150, 255, 0.5);
+        }
+
+        /* Герой секция */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(79, 126, 255, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            border: 1px solid rgba(79, 126, 255, 0.4);
+            color: #b8d0ff;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #fff, #9bbdff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 680px;
+            margin: 0 auto 32px;
+            color: #b9c8ff;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #2b5ef0;
+            color: white;
+            box-shadow: 0 8px 18px rgba(43, 94, 240, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #1a47c4;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 26px rgba(43, 94, 240, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #4f7eff;
+            color: #d2e0ff;
+        }
+
+        .btn-outline:hover {
+            background: rgba(79, 126, 255, 0.15);
+            border-color: #7aa2ff;
+            transform: translateY(-2px);
+        }
+
+        /* секция проектов */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title span {
+            background: linear-gradient(120deg, #ffffff, #7fa2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .project-card {
+            background: rgba(20, 28, 45, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            padding: 28px;
+            border: 1px solid rgba(79, 126, 255, 0.25);
+            transition: all 0.3s;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #4f7eff;
+            background: rgba(30, 40, 65, 0.7);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-icon {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #6c9eff;
+        }
+
+        .project-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #cbd5ff;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 16px 0 10px;
+        }
+
+        .tech-tag span {
+            background: rgba(79, 126, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: #9bbdff;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            transition: 0.2s;
+        }
+
+        .card-link:hover {
+            color: white;
+            gap: 12px;
+        }
+
+        /* Скиллы и технологии */
+        .skills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            border: 1px solid rgba(79, 126, 255, 0.3);
+            transition: 0.2s;
+        }
+
+        .skill-item i {
+            margin-right: 8px;
+            color: #6c9eff;
+        }
+
+        /* Цитата / о себе */
+        .about-block {
+            background: linear-gradient(115deg, rgba(25, 35, 60, 0.7) 0%, rgba(15, 20, 40, 0.8) 100%);
+            border-radius: 48px;
+            padding: 48px 36px;
+            margin: 30px 0 20px;
+            border: 1px solid rgba(79, 126, 255, 0.3);
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #e0ecff;
+        }
+
+        .signature {
+            margin-top: 24px;
+            font-style: italic;
+            color: #9db6ff;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(79, 126, 255, 0.2);
+            padding: 40px 0 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-bottom: 24px;
+        }
+
+        .social-links a {
+            color: #bbd1ff;
+            font-size: 1.7rem;
+            transition: 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: #7f8fb3;
+        }
+
+        /* Адаптив */
+        @media (max-width: 760px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .nav-bar {
+                flex-direction: column;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .about-block {
+                padding: 32px 20px;
+            }
+        }
+
+        /* анимация появления */
+        .fade-up {
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-bar">
+            <div class="logo">
+                <i class="fas fa-rocket"></i> NebulaForge
+            </div>
+            <div class="nav-links">
+                <a href="#">Главная</a>
+                <a href="#projects">Проекты</a>
+                <a href="#about">Обо мне</a>
+                <a href="#contact">Контакты</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge fade-up">
+                    <i class="fas fa-code"></i>  Портфолио разработчика
+                </div>
+                <h1 class="fade-up" style="animation-delay: 0.1s;">Создаю цифровой <br> космос и веб-решения</h1>
+                <p class="fade-up" style="animation-delay: 0.2s;">Привет! Я Александр — frontend-разработчик и дизайнер интерфейсов. Превращаю идеи в элегантные, быстрые и интерактивные веб-проекты.</p>
+                <div class="btn-group fade-up" style="animation-delay: 0.3s;">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Смотреть проекты</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fab fa-github"></i> GitHub профиль</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title"><span>✨ Избранные проекты</span></h2>
+                <div class="projects-grid">
+                    <!-- Карточка 1 -->
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-globe"></i></div>
+                        <h3>Orbit UI Kit</h3>
+                        <p>Современная библиотека компонентов на React + Tailwind. Используется в стартапах и лендингах по всему миру.</p>
+                        <div class="tech-tag">
+                            <span>React</span><span>Tailwind</span><span>Framer Motion</span>
+                        </div>
+                        <a href="#" class="card-link">Демо <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <!-- Карточка 2 -->
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Nebula Analytics</h3>
+                        <p>Дашборд с интерактивными графиками и реальной аналитикой для маркетплейсов. Оптимизирован под большие данные.</p>
+                        <div class="tech-tag">
+                            <span>Vue.js</span><span>D3.js</span><span>Express</span>
+                        </div>
+                        <a href="#" class="card-link">Подробнее <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <!-- Карточка 3 -->
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-meteor"></i></div>
+                        <h3>Cosmic Portfolio</h3>
+                        <p>Креативное портфолио для художников и дизайнеров с плавными анимациями и 3D-сценой на Three.js.</p>
+                        <div class="tech-tag">
+                            <span>Three.js</span><span>GSAP</span><span>WebGL</span>
+                        </div>
+                        <a href="#" class="card-link">Посмотреть <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция навыков -->
+        <div class="container">
+            <div style="text-align: center; margin: 20px 0 10px;">
+                <h2 class="section-title"><span>⚡ Технологии & инструменты</span></h2>
+                <div class="skills-wrap">
+                    <div class="skill-item"><i class="fab fa-js"></i> JavaScript (ES6+)</div>
+                    <div class="skill-item"><i class="fab fa-react"></i> React / Next.js</div>
+                    <div class="skill-item"><i class="fab fa-vuejs"></i> Vue / Nuxt</div>
+                    <div class="skill-item"><i class="fab fa-node-js"></i> Node.js</div>
+                    <div class="skill-item"><i class="fab fa-python"></i> Python</div>
+                    <div class="skill-item"><i class="fas fa-database"></i> Firebase / Supabase</div>
+                    <div class="skill-item"><i class="fab fa-figma"></i> Figma</div>
+                    <div class="skill-item"><i class="fab fa-git-alt"></i> Git & Github Actions</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- О себе / цитата -->
+        <div class="container" id="about">
+            <div class="about-block">
+                <div class="about-text">
+                    <i class="fas fa-quote-left" style="font-size: 2rem; opacity: 0.5; margin-right: 10px;"></i>
+                    Я верю, что код — это инструмент для создания впечатлений. Каждый проект начинается с идеи, а заканчивается удобным, красивым и надёжным продуктом. 
+                    Люблю экспериментировать с анимациями, микровзаимодействиями и внедрять современные веб-стандарты.
+                </div>
+                <div class="signature">
+                    — Александр В., Senior Frontend-разработчик
+                </div>
+            </div>
+        </div>
+
+        <!-- Форма связи и контакты -->
+        <div class="container" id="contact" style="padding-bottom: 20px;">
+            <h2 class="section-title"><span>📬 Давайте создадим что-то вместе</span></h2>
+            <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                <div style="background: rgba(20, 28, 50, 0.6); backdrop-filter: blur(8px); border-radius: 48px; padding: 32px; max-width: 560px; width: 100%; border: 1px solid rgba(79,126,255,0.3);">
+                    <form action="#" method="post" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 6px; font-weight: 500;"><i class="far fa-user"></i> Ваше имя</label>
+                            <input type="text" placeholder="Анна К." style="width: 100%; padding: 14px 18px; border-radius: 60px; border: none; background: #101624; color: white; font-family: inherit; border: 1px solid #2d3a62;" required>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 6px;"><i class="far fa-envelope"></i> Email</label>
+                            <input type="email" placeholder="hello@example.com" style="width: 100%; padding: 14px 18px; border-radius: 60px; border: none; background: #101624; color: white; font-family: inherit; border: 1px solid #2d3a62;" required>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 6px;"><i class="far fa-comment"></i> Сообщение</label>
+                            <textarea rows="3" placeholder="Расскажите о вашей идее..." style="width: 100%; padding: 14px 18px; border-radius: 28px; border: none; background: #101624; color: white; font-family: inherit; border: 1px solid #2d3a62; resize: vertical;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить сообщение</button>
+                        <p style="font-size: 0.75rem; text-align: center; margin-top: 5px; opacity: 0.7;">* Демо-форма, ваше сообщение не отправится на сервер, но покажет отличный UX</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="copyright">
+                <i class="far fa-copyright"></i> 2026 NebulaForge — создано с <i class="fas fa-heart" style="color: #ff7b7b;"></i> для GitHub Pages
+            </div>
+        </div>
+    </footer>
+
+    <!-- Простая обработка формы (демо, без реальной отправки) -->
+    <script>
+        // Небольшая интерактивная "демо" форма: уведомление при отправке
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nameInput = form.querySelector('input[placeholder*="Анна"]') || form.querySelector('input[type="text"]');
+                const nameVal = nameInput ? nameInput.value.trim() : 'друг';
+                alert(`✨ Спасибо, ${nameVal || 'посетитель'}! Форма демонстрационная, но ваше сообщение воодушевляет ✨\n\n(Проект готов к размещению на GitHub)`);
+                form.reset();
+            });
+        }
+
+        // Плавный скролл для навигационных ссылок
+        document.querySelectorAll('.nav-links a, .btn-primary[href^="#"], .btn-outline[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#' && targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+        // Дополнительная обработка для кнопки GitHub (не ссылка на якорь, просто пример)
+        const githubBtn = document.querySelector('.btn-outline');
+        if (githubBtn && githubBtn.getAttribute('href') === '#contact') {
+            // ничего лишнего, оставим демо-ссылку на секцию контактов
+        }
+        // легкий эффект появления для карточек при скролле (простой intersection observer)
+        const cards = document.querySelectorAll('.project-card, .about-block, .skills-wrap, .hero');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        // сразу показываем hero
+        const heroBlock = document.querySelector('.hero');
+        if(heroBlock) {
+            heroBlock.style.opacity = '1';
+            heroBlock.style.transform = 'translateY(0)';
+        }
+    </script>
+</body>
+</html>
